@@ -1,2 +1,3 @@
-# environment_and_diets
-info 201 final 
+https://laurenng.shinyapps.io/info_201_AB05/
+
+^ our shiny application 
