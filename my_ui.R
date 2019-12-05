@@ -10,7 +10,7 @@ library("shinythemes")
 
 #--------------Title Page------------------------------------------------------
 intro <- tabPanel(
-  h3("home"),
+  h3("Home"),
   h2("How much of an impact does our diet have on the enviornment?"),
   "by: Lauren, Graeme, Bryan, and Sun",
   imageOutput("group_pic"),
@@ -28,7 +28,11 @@ detail1 <- tabPanel(
 
 detail2 <- tabPanel("Stakeholders",
                     h3("Stakeholders"),
-  "The food and agriculture sector contributes"
+  "The food and agriculture sector contributes a significant portion towards global emissions, 
+  which indicates that all living beings are indirect stakeholders in the situation. The 
+  direct stakeholders -buyers, sellers, growers, middlemen- are all directly impacted as well.
+  An effect consious consumer would understand that their purchases have ramifications throughout 
+  the supply chain."
 )
   
 detail3 <- tabPanel(
@@ -120,10 +124,80 @@ about <- tabPanel(
   ),
 )
 
+#--------Conclusion Page--------------------------------------
+
+graph_just <- tabPanel(
+  "Visualization Choice",
+  h3("Emissions by Meal"),
+  "An abstract view of emissions based on kilograms of food is insufficent in displaying 
+  the real world impacts of consumption. A much more impactful and meaninful representation
+  of emissions is based on common and tangible items. A familiarity with common meals such 
+  as hamburgers and pasta allow for a holistic comparison ",
+  
+  h3("Land and Water Use"),
+  "Carbon emissions are a primary factor in the impact on the enviroment. It, however, does
+  not tell the whole picture. A very important consideration, especially with regards to 
+  agriculture and livestock, is the impact of the product on land and water. As living beings, 
+  the impact of consumption is felt thoughout the cycle, with exponentially higher needs as
+  the product moves up the food chain. ",
+  
+  h3("Meal Calculator"),
+  "Similar to the emissions by meal, this calculator allows for a sense of familiarity for
+  the user. The interactive nature of the application additionally allows for a much more
+  personal and understandable experience for users. This is also very important as a stepping
+  stone towards substantive change. The ability to craft meals and observe the real-world
+  impact of each ingredient would allow for a value-based, considerate form of consumption.
+  The meal calculator also facilitates users who are commited to the call-to-action and 
+  informs their choices, allowing them to be substantive.",
+)
+
+takeaways <- tabPanel(
+  "What did we Learn?",
+  h3("What are the Takeaways?"),
+  "One of the most glaring observations that was made during this investigation is the 
+  position of a food on the food chain. There was a clear, substantive increase in the 
+  average CO2 emissions of animal products compared to plants. This was especially evident 
+  in the cases of large animals, such as buffalo or cows, which dominated the CO2 emissions
+  with both high averages and high outliers. These food products were also significantly 
+  more impact on the use of Land and Water in general. The amount of effort that must be made
+  to grow a crop for the sake of using it to grow another material should not be understated. 
+  An interesting feature that was discovered was that the highest outliers were often in 
+  impoverished areas (in infrastructure and natural resources). Sub-saharan Africa, South Asia, 
+  and Australia were often at the top of the charts. Imported goods and specialty goods, 
+  such as organic or artisinal, were also more impactful in terms of emissions on average."
+)
+
+outlook <- tabPanel(
+  "Outlook",
+  h3("Outlook"),
+  "We do not claim to be experts on the topic. We do not have the technical expertise to 
+  understand the intricacies that feed into the data that we used. The broad strokes used
+  to represent vast, and culturally diverse areas are simply incapable of showing all. This
+  does not however, reduce the impact of the data analysis. It in fact, strengthens the point
+  by demonstrating wide consensus thoughout all regions. Large, grazing mammals are simply
+  worse for the enviroment. While we cannot make sweeping reccomendations, we can only hope
+  that people can observe this data and use it to inform their life choices. A focus and 
+  recognition of the impacts of mundane factors, such as diet, are important in maintaining a 
+  value-based life."
+)
+
+conclusion <- tabPanel(
+  h3("Conclusion"),
+  mainPanel(
+    navlistPanel(
+      graph_just, 
+      takeaways,
+      outlook,
+      widths = c(2, 10)
+    ),
+  ),
+)
+
 #--------First Page--------------------------------------
 emissions_by_meal <- tabPanel(
   h3("Emissions by Meal"),
   titlePanel("Emissions by Meal"),
+  "Calculations of the green house gas emissions from various common meals",
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -158,6 +232,8 @@ map_page <- tabPanel(
 page_four <- tabPanel(
   h3("Land and Water Usage"),
   titlePanel("Land and Water Usage"),
+  "A comparison tool between different food products and thier impacts
+  on Land and Water usage.",
   sidebarLayout(
     sidebarPanel(
       checkboxGroupInput("product", h3("Choose food items:"),
@@ -178,6 +254,8 @@ page_four <- tabPanel(
 recipe_input <- tabPanel(
   h3("Input your recipe"), 
   titlePanel("Input your Recipe"),
+  "A tool that allows users to identify their own recipies and observe the tangible
+  impact of various ingredient choices.",
   mainPanel(
     uiOutput("newIngred")
   ),
@@ -212,7 +290,7 @@ my_ui <- navbarPage(
   intro,
   about,
   emissions_by_meal,
-  map_page,
   page_four,
-  recipe_input
+  recipe_input, 
+  conclusion
 )

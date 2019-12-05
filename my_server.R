@@ -62,7 +62,16 @@ my_server <- function(input, output, session) {
     message_str <- paste(ghg_tot, "kg CO2 Equivalents")
     message_str
   })
+   
+  ##### Country Plot
+  output$bad_bar <- renderPlot({
+    our_data <- global_df_map %>%
+      filter(Product == "Beef") 
     
+    color <- c("red")
+    barplot(our_data$CO2, col = color, main = "Distribution of CO2 emission for Beef Production", ylab= "Kg of CO2/Kg of Beef")
+  })
+   
   #----Server for plot outputs------------------------------------------
   
   ##### Third page plots
